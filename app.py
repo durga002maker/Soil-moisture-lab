@@ -9,12 +9,21 @@ st.set_page_config(page_title="Soil Moisture Lab", page_icon="🌱", layout="cen
 st.title("🌱 Soil Moisture Virtual Lab")
 
 # -------------------------------
+# 🎯 AIM SECTION
+# -------------------------------
+st.header("🎯 Aim of the Virtual Lab")
+st.info("""
+The aim of this virtual lab is to simulate and analyze soil moisture levels for efficient irrigation management in agriculture. 
+It helps users understand how moisture levels affect crop growth and provides smart recommendations for watering. 
+This system promotes sustainable farming using simulation, basic AI guidance, and interactive learning.
+""")
+
+# -------------------------------
 # 🌱 SOIL MOISTURE SIMULATOR
 # -------------------------------
 st.header("🌾 Soil Moisture Simulator")
 
 moisture = st.slider("Select Soil Moisture (%)", 0, 100, 50)
-
 crop = st.selectbox("Select Crop", ["Rice", "Wheat", "Maize"])
 
 # Status logic
@@ -50,8 +59,8 @@ st.pyplot(fig)
 
 # Simulate button
 if st.button("🔄 Simulate Sensor"):
-    moisture = random.randint(10, 90)
-    st.write(f"Simulated Moisture: {moisture}%")
+    sim_value = random.randint(10, 90)
+    st.write(f"Simulated Moisture: {sim_value}%")
 
 # -------------------------------
 # 🤖 AI ASSISTANT
@@ -102,16 +111,14 @@ questions = [
     }
 ]
 
-score = 0
-
 for i, q in enumerate(questions):
     st.subheader(q["question"])
     user_ans = st.radio("Choose your answer:", q["options"], key=i)
 
     if st.button(f"Check Answer {i+1}", key=f"btn{i}"):
         if user_ans == q["answer"]:
-            st.success("Correct ✅")
+            st.success("Correct")
         else:
-            st.error(f"Wrong ❌ Correct answer: {q['answer']}")
+            st.error(f"Wrong. Correct answer: {q['answer']}")
 
-st.write("🎯 Try all questions and test your knowledge!")
+st.write("Try all questions and test your knowledge!")
