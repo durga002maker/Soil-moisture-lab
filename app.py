@@ -1,4 +1,25 @@
-import streamlit as st
+st.header("🤖 AI Soil Moisture Assistant")
+
+user_question = st.text_input("Ask about soil moisture, irrigation, or crops:")
+
+def simple_ai_response(question):
+    question = question.lower()
+
+    if "soil moisture" in question:
+        return "Soil moisture refers to the amount of water present in the soil, crucial for plant growth."
+    elif "irrigation" in question:
+        return "Irrigation should be done when soil moisture is low to maintain optimal crop health."
+    elif "rice" in question:
+        return "Rice requires high water levels and grows best in wet soil conditions."
+    elif "wheat" in question:
+        return "Wheat grows best in moderate moisture and cannot tolerate waterlogging."
+    elif "maize" in question:
+        return "Maize requires well-drained soil and moderate watering."
+    else:
+        return "Please ask about soil moisture, irrigation, or crops like rice, wheat, or maize."
+
+if user_question:
+    st.success(simple_ai_response(user_question))import streamlit as st
 import random
 import matplotlib.pyplot as plt
 
